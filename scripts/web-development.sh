@@ -18,6 +18,17 @@ Alias /phpmyadmin /usr/share/phpMyAdmin
 </Directory>
 APACHECONF
 
+# Change phpMyAdmin config for no passwd use.
+sed -i '$ d' /etc/phpMyAdmin/config.inc.php
+cat <<"PHPMYADMINCONF" >> /etc/phpMyAdmin/config.inc.php
+/* Overwrite defaults (for Vagrant). */
+$cfg['Servers'][$i]['connect_type'] = 'socket';
+$cfg['Servers'][$i]['auth_type'] = 'config';
+$cfg['Servers'][$i]['user'] = 'root';
+$cfg['Servers'][$i]['AllowNoPassword'] = TRUE;
+?>
+PHPMYADMINCONF
+
 # PHP config
 sed -i s/'display_errors = Off'/'display_errors = On'/ /etc/php.ini
 sed -i s/'html_errors = Off'/'html_errors = On'/ /etc/php.ini
