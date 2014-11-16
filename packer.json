@@ -13,7 +13,7 @@
             ],
             "headless": "false",
             "boot_command": [
-                "<tab> text ks=http://{{.HTTPI }}:{{.HTTPPort}}/ks.cfg<enter><wait>"
+                "<tab> text ks=http://{{.HTTPIP}}:{{.HTTPPort}}/ks.cfg<enter><wait>"
             ],
             "boot_wait": "10s",
             "http_directory": ".",
