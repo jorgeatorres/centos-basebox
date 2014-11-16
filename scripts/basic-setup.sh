@@ -9,5 +9,4 @@ echo "! Slow DNS fix applied"
 echo "UseDNS no" >> /etc/ssh/sshd_config
 echo "GSSAPIAuthentication no" >> /etc/ssh/sshd_config
 
-yum -y update
-echo "! Packages updated";
+yum -y install wget

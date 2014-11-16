@@ -1,8 +1,8 @@
 {
     "builders": [
         {
-            "vm_name": "riddler-centos-7.0-x86_64",
             "type": "virtualbox-iso",
+            "name": "riddler-centos-7.0-x86_64",
             "guest_os_type": "RedHat_64",
             "iso_url": "/Users/jorge/Desktop/CentOS-7.0-1406-x86_64-Minimal.iso",
             "iso_checksum": "e3afe3f1121d69c40cc23f0bafa05e5d",
@@ -13,7 +13,7 @@
             ],
             "headless": "false",
             "boot_command": [
-                "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+                "<tab> text ks=http://{{.HTTPI }}:{{.HTTPPort}}/ks.cfg<enter><wait>"
             ],
             "boot_wait": "10s",
             "http_directory": ".",
@@ -32,6 +32,13 @@
                          "scripts/cleanup.sh",
                          "scripts/minimize.sh" ],
             "type": "shell"
+        }
+    ],
+    "post-processors": [
+        {
+            "type": "vagrant",
+            "compression_level": 9,
+            "output": "{{.BuildName}}.box"
         }
     ]
 }
