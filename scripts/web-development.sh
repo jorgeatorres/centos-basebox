@@ -1,5 +1,7 @@
 #!/bin/bash
 
+yum -y install httpd mariadb mariadb-server php php-mysql php-gd
+
 systemctl enable postfix
 systemctl enable mariadb.service
 systemctl enable httpd.service
